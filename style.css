@@ -17,17 +17,17 @@ h1 {
 }
 
 .container {
-    display: grid;
-    height: 300px;
-    width: 300px;
-    gap: 5px;
-    margin-right: 350px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 600px;
+    width: 600px;
+    border: 5px solid #FFB200;
 }
 
 .square {
-    width: 100%;
     background-color: #ffffff;
-    border: 1px solid #40ff00;
+    /*border: 1px solid #40ff00;*/
 }
 
 .btns {

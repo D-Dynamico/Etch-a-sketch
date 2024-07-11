@@ -1,25 +1,25 @@
 const container = document.querySelector('.container');
 
-function createSquares(size){
+function createSquares(size) {
+    container.innerHTML = '';
 
-    for (let i = 0; i < size*size; i++) {
+    for (let i = 0; i < size * size; i++) {
         const square = document.createElement('div');
         square.classList.add('square');
+        square.style.width = `${600 / size}px`;
+        square.style.height = `${600 / size}px`;
         container.appendChild(square);
     }
-    const box=document.querySelectorAll(".square");
 
-    box.forEach(square => {
-    square.addEventListener('mouseover', function() {
-        square.style.backgroundColor = getRandomColor();
+    const squares = document.querySelectorAll('.square');
+    squares.forEach(square => {
+        square.addEventListener('mouseover', function() {
+            square.style.backgroundColor = getRandomColor();
+        });
     });
-    });
-
-    //This is basically used for ensuring squares are properly aligned
-    container.style.gridTemplateColumns = `repeat(${size}, 30px)`; 
-    container.style.gridTemplateRows = `repeat(${size}, 30px)`; 
 }
 
+createSquares(16);
 
 function getRandomColor() {
     const r = Math.floor(Math.random() * 255);
@@ -28,17 +28,13 @@ function getRandomColor() {
     return `rgb(${r},${g},${b})`;
 }
 
-const newGrid=document.querySelector("button");
+const newGrid = document.querySelector('button');
 newGrid.addEventListener('click', function() {
-    let size=prompt("Enter grid size(e.g 16x16...)");
-    size=parseInt(size);
-    if(size>0){
+    let size = prompt('Enter grid size (e.g., 16 for 16x16)');
+    size = parseInt(size);
+    if (size > 0) {
         createSquares(size);
+    } else {
+        alert('Enter a valid grid size!');
     }
-    else{
-        alert("Enter valid grid!!")
-    }
-})
-
-
-
+});
